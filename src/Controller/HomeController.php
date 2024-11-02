@@ -9,7 +9,7 @@ use Faker\Factory;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/home', name: 'app_home')]
     public function index(): Response
     {
         $faker = Factory::create();
@@ -19,10 +19,11 @@ class HomeController extends AbstractController
             'email' => $faker->email,
             'address' => $faker->address,
             'phone' => $faker->phoneNumber,
+            'text' => $faker->text,
         ];
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'data' => $data,
         ]);
     }
 }
